@@ -1,9 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>基于Hexo框架和NexT主题的个人博客搭建</title>
+    <url>/2021/09/13/%E5%9F%BA%E4%BA%8EHexo%E6%A1%86%E6%9E%B6%E5%92%8CNexT%E4%B8%BB%E9%A2%98%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</url>
+    <content><![CDATA[<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><p>框架：Hexo</p>
+<p>主题：NexT</p>
+<p>托管：Github Pages</p>
+<span id="more"></span>
+
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://hexo.io/zh-cn/docs/">Hexo官方文档</a></p>
+<p><a href="https://theme-next.js.org/docs/">NexT官方文档</a></p>
+<p><a href="https://docs.github.com/en/pages">GIthub Pages Documentation</a></p>
+<p><a href="https://www.zhihu.com/column/c_1201860091307458560">知乎专栏 - MyBlog</a></p>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="DNS劫持"><a href="#DNS劫持" class="headerlink" title="DNS劫持"></a>DNS劫持</h2><h3 id="问题-1"><a href="#问题-1" class="headerlink" title="问题"></a>问题</h3><p>给Github Pages配置custom domain后，打开custom domain却指向未知页面</p>
+<h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><ul>
+<li>windows下使用cmd，<code>ping yourname.github.io</code>后得到ipv4地址</li>
+<li>先在仓库的Settings页面配置好custom domain</li>
+<li>再去DNS 提供商解析域名</li>
+</ul>
+<blockquote>
+<p>Make sure you add your custom domain to your GitHub Pages site before configuring your custom domain with your DNS provider. Configuring your custom domain with your DNS provider without adding your custom domain to GitHub could result in someone else being able to host a site on one of your subdomains.</p>
+</blockquote>
+<h2 id="YAML格式错误"><a href="#YAML格式错误" class="headerlink" title="YAML格式错误"></a>YAML格式错误</h2><h3 id="问题-2"><a href="#问题-2" class="headerlink" title="问题"></a>问题</h3><p><code>FATAL YAMLException: bad indentation of a mapping entry</code></p>
+<p><img src="../images/2021-09-13-%E5%9F%BA%E4%BA%8EHexo%E6%A1%86%E6%9E%B6%E5%92%8CNexT%E4%B8%BB%E9%A2%98%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/1.png" alt="1"></p>
+<h3 id="解决-1"><a href="#解决-1" class="headerlink" title="解决"></a>解决</h3><p>line6 中 <code>title: ‘LiWanqing’s Blog’</code> 中引号中的引号需要转义，好在title后的字符串并不一定需要引号括起来，把引号删去即可。  </p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">title:</span> <span class="string">LiWanqing’s</span> <span class="string">Blog</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="图片存储位置"><a href="#图片存储位置" class="headerlink" title="图片存储位置"></a>图片存储位置</h2><h3 id="filename"><a href="#filename" class="headerlink" title="./${filename}"></a>./${filename}</h3><p>根目录下的<code>_config.yml</code>中，设置<code>post_asset_folder: true</code>，使得在<code>hexo new title</code>时，同时在<code>title.md</code>的父级文件夹中新建一个名为title的文件夹，用以存放images等文件。并且在typora的偏好设置 - 图像 - 插入图片时，选择‘复制到指定路径’，并手动输入<code>./$&#123;filename&#125;</code>。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">new_post_name:</span> <span class="string">:title.md</span></span><br><span class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="../images/2021-09-13-基于Hexo框架和NexT主题的个人博客搭建/image-20210913195355484.png" alt="image-20210913195355484" style="zoom:50%;" /><img src="../images/2021-09-13-基于Hexo框架和NexT主题的个人博客搭建/image-20210913195411878.png" alt="image-20210913195411878" style="zoom:50%;" /></p>
+<p><em><strong>Attention :</strong></em> </p>
+<p>这种方法在开发时，文件和图片不在同一个文件夹，即<code>source/_posts/title.md</code>和 <code>source/_posts/title/picture</code>不在同一个文件夹内。</p>
+<p>而部署至生产时，因为根目录下的<code>_config.yml</code>中配置了永久链接 <code>permalink: :year/:month/:day/:title/</code>，文件和图片却又在同一个文件夹，即<code>public/year/month/day/title/index.html</code> 和 <code>public/year/month/day/title/picture</code>在同一个文件夹。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">permalink: :year/:month/:day/:title/</span><br></pre></td></tr></table></figure>
+
+<p>这样就导致，<code>title.md</code> 及依赖 <code>title.md</code> 生成的 <code>index.html</code> 引用图片时，相对路径写的不是同一个文件夹，引用不到图片，从而无法显示。</p>
+<h3 id="source-images-filename"><a href="#source-images-filename" class="headerlink" title="../../source/images/${filename}"></a>../../source/images/${filename}</h3><p>根目录下的_config.yml中，设置post_asset_folder: false。而是在typora的偏好设置 - 图像 - 插入图片时，选择‘复制到指定路径’，并手动输入../../source/images/${filename}。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">new_post_name:</span> <span class="string">:title.md</span></span><br><span class="line"><span class="attr">post_asset_folder:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="../images/2021-09-13-基于Hexo框架和NexT主题的个人博客搭建/image-20210913165928205.png" alt="image-20210913165928205" style="zoom: 50%;" /> <img src="../images/2021-09-13-基于Hexo框架和NexT主题的个人博客搭建/image-20210913170404886.png" alt="image-20210913170404886" style="zoom:50%;" /></p>
+]]></content>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>NexT</tag>
+        <tag>Blog</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/2021/09/06/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<span id="more"></span>
+
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
@@ -17,46 +68,5 @@
 
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>基于Hexo框架和NexT主题的个人博客搭建</title>
-    <url>/2021/09/13/%E5%9F%BA%E4%BA%8EHexo%E6%A1%86%E6%9E%B6%E5%92%8CNexT%E4%B8%BB%E9%A2%98%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</url>
-    <content><![CDATA[<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><p>框架：Hexo</p>
-<p>主题：NexT</p>
-<p>托管：Github Pages</p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://hexo.io/zh-cn/docs/">Hexo官方文档</a></p>
-<p><a href="https://theme-next.js.org/docs/">NexT官方文档</a></p>
-<p><a href="https://docs.github.com/en/pages">GIthub Pages Documentation</a></p>
-<p><a href="https://www.zhihu.com/column/c_1201860091307458560">知乎专栏 - MyBlog</a></p>
-<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="DNS劫持"><a href="#DNS劫持" class="headerlink" title="DNS劫持"></a>DNS劫持</h2><h3 id="问题-1"><a href="#问题-1" class="headerlink" title="问题"></a>问题</h3><p>给Github Pages配置custom domain后，打开custom domain却指向未知页面</p>
-<h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><ul>
-<li>windows下使用cmd，ping yourname.github.io后得到ipv4地址</li>
-<li>先在仓库的Settings页面配置好custom domain</li>
-<li>再去DNS 提供商解析域名</li>
-</ul>
-<blockquote>
-<p>Make sure you add your custom domain to your GitHub Pages site before configuring your custom domain with your DNS provider. Configuring your custom domain with your DNS provider without adding your custom domain to GitHub could result in someone else being able to host a site on one of your subdomains.</p>
-</blockquote>
-<h2 id="YAML格式错误"><a href="#YAML格式错误" class="headerlink" title="YAML格式错误"></a>YAML格式错误</h2><h3 id="问题-2"><a href="#问题-2" class="headerlink" title="问题"></a>问题</h3><p>FATAL YAMLException: bad indentation of a mapping entry</p>
-<p><img src="../images/%E5%9F%BA%E4%BA%8EHexo%E6%A1%86%E6%9E%B6%E5%92%8CNexT%E4%B8%BB%E9%A2%98%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/1.png" alt="1"></p>
-<h3 id="解决-1"><a href="#解决-1" class="headerlink" title="解决"></a>解决</h3><p>line6 中 title: ‘LiWanqing’s Blog’ 中引号中的引号需要转义，好在title后的字符串并不一定需要引号括起来，把引号删去即可。  </p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">title:</span> <span class="string">LiWanqing’s</span> <span class="string">Blog</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="图片存储位置"><a href="#图片存储位置" class="headerlink" title="图片存储位置"></a>图片存储位置</h2><h3 id="filename"><a href="#filename" class="headerlink" title="./${filename}"></a>./${filename}</h3><p>根目录下的_config.yml中，设置post_asset_folder: true，使得在hexo new title时，同时在title.md的父级文件夹中新建一个名为title的文件夹，用以存放images等文件。并且在typora的偏好设置 - 图像 - 插入图片时，选择‘复制到指定路径’，并手动输入./${filename}。</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">new_post_name:</span> <span class="string">:title.md</span></span><br><span class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="基于Hexo框架和NexT主题的个人博客搭建/image-20210913175144370.png" alt="image-20210913175144370" style="zoom:50%;" /><img src="基于Hexo框架和NexT主题的个人博客搭建/image-20210913175056315.png" alt="image-20210913175056315" style="zoom:50%;" /></p>
-<h3 id="source-images-filename"><a href="#source-images-filename" class="headerlink" title="../../source/images/${filename}"></a>../../source/images/${filename}</h3><p>根目录下的_config.yml中，设置post_asset_folder: false。而是在typora的偏好设置 - 图像 - 插入图片时，选择‘复制到指定路径’，并手动输入../../source/images/${filename}。</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">new_post_name:</span> <span class="string">:title.md</span></span><br><span class="line"><span class="attr">post_asset_folder:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="../images/基于Hexo框架和NexT主题的个人博客搭建/image-20210913165928205.png" alt="image-20210913165928205" style="zoom: 50%;" /> <img src="../images/基于Hexo框架和NexT主题的个人博客搭建/image-20210913170404886.png" alt="image-20210913170404886" style="zoom:50%;" /></p>
-]]></content>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>NexT</tag>
-        <tag>Blog</tag>
-      </tags>
   </entry>
 </search>
