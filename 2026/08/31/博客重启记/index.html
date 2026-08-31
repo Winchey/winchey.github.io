@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.liwanqing.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.29.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="时隔五年，把这个博客重新捡起来了。上一篇更新停在 2021 年 9 月，那时候是刚搭好博客发的搭建教程，此后就再没写过一个字。 本地的 Hexo 源码在几次换电脑之后早就丢了，GitHub 上的仓库里只剩下 2021 年 hexo deploy 推上来的构建产物——一堆 HTML&#x2F;CSS&#x2F;JS，没有一行 Markdown。想续写，等于要从”考古现场”重启。 这篇记录一下重启的过">
+<meta property="og:type" content="article">
+<meta property="og:title" content="博客重启记">
+<meta property="og:url" content="https://www.liwanqing.com/2026/08/31/%E5%8D%9A%E5%AE%A2%E9%87%8D%E5%90%AF%E8%AE%B0/index.html">
+<meta property="og:site_name" content="LiWanqing&#39;s Blog">
+<meta property="og:description" content="时隔五年，把这个博客重新捡起来了。上一篇更新停在 2021 年 9 月，那时候是刚搭好博客发的搭建教程，此后就再没写过一个字。 本地的 Hexo 源码在几次换电脑之后早就丢了，GitHub 上的仓库里只剩下 2021 年 hexo deploy 推上来的构建产物——一堆 HTML&#x2F;CSS&#x2F;JS，没有一行 Markdown。想续写，等于要从”考古现场”重启。 这篇记录一下重启的过">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-08-31T19:21:15.000Z">
+<meta property="article:modified_time" content="2026-08-31T19:28:02.855Z">
+<meta property="article:author" content="LiWanqing">
+<meta property="article:tag" content="Blog">
+<meta property="article:tag" content="GitHub Actions">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="NexT">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.liwanqing.com/2026/08/31/%E5%8D%9A%E5%AE%A2%E9%87%8D%E5%90%AF%E8%AE%B0/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://www.liwanqing.com/2026/08/31/%E5%8D%9A%E5%AE%A2%E9%87%8D%E5%90%AF%E8%AE%B0/","path":"2026/08/31/博客重启记/","title":"博客重启记"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>博客重启记 | LiWanqing's Blog</title>
+  
+
+
+
+
+
+
+
+
+  
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">LiWanqing's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">行之于途而应于心</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B5%B7%E7%82%B9%EF%BC%9A%E5%8F%AA%E5%89%A9%E4%BA%A7%E7%89%A9%EF%BC%8C%E6%B2%A1%E6%9C%89%E6%BA%90%E7%A0%81"><span class="nav-number">1.</span> <span class="nav-text">起点：只剩产物，没有源码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%B3%E7%AD%96%EF%BC%9A%E6%8D%A2%E6%A0%88%EF%BC%8C%E8%BF%98%E6%98%AF%E5%8E%9F%E5%9C%B0%E9%87%8D%E5%BB%BA"><span class="nav-number">2.</span> <span class="nav-text">决策：换栈，还是原地重建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B0%E6%9E%B6%E6%9E%84%EF%BC%9A%E6%BA%90%E7%A0%81-%E4%BA%A7%E7%89%A9%E5%88%86%E7%A6%BB"><span class="nav-number">3.</span> <span class="nav-text">新架构：源码&#x2F;产物分离</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%81%E7%A7%BB%E8%BF%87%E7%A8%8B%E4%B8%AD%E8%B8%A9%E5%88%B0%E7%9A%84%E5%87%A0%E4%B8%AA%E5%9D%91"><span class="nav-number">4.</span> <span class="nav-text">迁移过程中踩到的几个坑</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-hexo-init-%E4%B8%8D%E8%83%BD%E5%9C%A8%E9%9D%9E%E7%A9%BA%E7%9B%AE%E5%BD%95%E9%87%8C%E8%B7%91"><span class="nav-number">4.1.</span> <span class="nav-text">1. hexo init . 不能在非空目录里跑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-config-yml-%E6%94%B9%E5%8A%A8%E4%B8%8D%E7%83%AD%E9%87%8D%E8%BD%BD"><span class="nav-number">4.2.</span> <span class="nav-text">2. _config.yml 改动不热重载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-theme-next-%E5%9C%A8-GitHub-Pages-%E4%B8%8A%E4%BC%9A%E8%A7%A6%E5%8F%91%E4%B8%80%E6%AC%A1%E8%8E%AB%E5%90%8D%E5%85%B6%E5%A6%99%E7%9A%84-Jekyll-%E6%8A%A5%E9%94%99"><span class="nav-number">4.3.</span> <span class="nav-text">3. theme: next 在 GitHub Pages 上会触发一次莫名其妙的 Jekyll 报错</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-NexT-8-x-%E7%9A%84-back-to-top-%E6%8C%89%E9%92%AE%E8%B7%9F%E4%BE%A7%E8%BE%B9%E6%A0%8F%E5%90%8C%E4%BE%A7"><span class="nav-number">4.4.</span> <span class="nav-text">4. NexT 8.x 的 back-to-top 按钮跟侧边栏同侧</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-NexT-%E4%BE%A7%E8%BE%B9%E6%A0%8F%E2%80%9D%E9%93%BE%E6%8E%A5%E2%80%9D%E6%83%B3%E6%94%B9%E6%88%90%E2%80%9D%E5%8F%8B%E9%93%BE%E2%80%9D"><span class="nav-number">4.5.</span> <span class="nav-text">5. NexT 侧边栏”链接”想改成”友链”</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%80%81%E6%96%87%E7%AB%A0%E7%9A%84%E8%BF%81%E7%A7%BB"><span class="nav-number">5.</span> <span class="nav-text">老文章的迁移</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%B0%E5%9C%A8%E6%8B%A5%E6%9C%89%E4%BA%86%E4%BB%80%E4%B9%88"><span class="nav-number">6.</span> <span class="nav-text">现在拥有了什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8E%E8%AE%B0"><span class="nav-number">7.</span> <span class="nav-text">后记</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="LiWanqing"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">LiWanqing</p>
+  <div class="site-description" itemprop="description">所爱隔山海，山海不可平。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="mailto:liwanqing.ai@gmail.com" title="E-Mail → mailto:liwanqing.ai@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+<div class="cc-opacity-inherit" style="margin-top: 20px; text-align: center;">
+  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="240" height="86"
+    src="https://music.163.com/outchain/player?type=2&id=406072138&auto=1&height=66"></iframe>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          友链</div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://www.sunyongfei.cn/" title="https:&#x2F;&#x2F;www.sunyongfei.cn" rel="noopener" target="_blank">我的爱人</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.liwanqing.com/2026/08/31/%E5%8D%9A%E5%AE%A2%E9%87%8D%E5%90%AF%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="LiWanqing">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiWanqing's Blog">
+      <meta itemprop="description" content="所爱隔山海，山海不可平。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="博客重启记 | LiWanqing's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          博客重启记
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2026-09-01 03:21:15 / 修改时间：03:28:02" itemprop="dateCreated datePublished" datetime="2026-09-01T03:21:15+08:00">2026-09-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%98%E8%85%BE/" itemprop="url" rel="index"><span itemprop="name">折腾</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.8k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>时隔五年，把这个博客重新捡起来了。上一篇更新停在 2021 年 9 月，那时候是刚搭好博客发的搭建教程，此后就再没写过一个字。</p>
+<p>本地的 Hexo 源码在几次换电脑之后早就丢了，GitHub 上的仓库里只剩下 2021 年 hexo deploy 推上来的构建产物——一堆 HTML&#x2F;CSS&#x2F;JS，没有一行 Markdown。想续写，等于要从”考古现场”重启。</p>
+<p>这篇记录一下重启的过程，也算给未来的自己留一个”再丢一次源码也能救回来”的说明书。</p>
+<span id="more"></span>
+
+<h2 id="起点：只剩产物，没有源码"><a href="#起点：只剩产物，没有源码" class="headerlink" title="起点：只剩产物，没有源码"></a>起点：只剩产物，没有源码</h2><p>翻开仓库，看到的是这样一片废墟：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">winchey.github.io/</span><br><span class="line">├── 2021/09/13/基于Hexo.../index.html</span><br><span class="line">├── archives/  categories/  tags/</span><br><span class="line">├── css/  js/  images/</span><br><span class="line">├── index.html</span><br><span class="line">├── search.xml</span><br><span class="line">└── CNAME</span><br></pre></td></tr></table></figure>
+
+<p>全是 Hexo 生成的静态文件。<strong>Hexo 默认的部署方式 <code>hexo deploy</code> 只推 <code>public/</code> 目录</strong>，Markdown 源文件、<code>_config.yml</code>、主题配置这些”真正的博客”从头到尾没进过 Git。本地一丢，源码就真丢了。</p>
+<p>这个坑其实挺常见——Hexo 官方文档没有把”源码也要用 Git 管起来”当作必须项来强调，很多人第一次搭博客就是照默认流程走，直到某天换电脑才发现自己一直在裸奔。</p>
+<h2 id="决策：换栈，还是原地重建"><a href="#决策：换栈，还是原地重建" class="headerlink" title="决策：换栈，还是原地重建"></a>决策：换栈，还是原地重建</h2><p>一开始想过换 Typecho：PHP 动态 CMS，网页后台直接写、直接发，不用命令行部署。但仔细算了一下代价：</p>
+<ul>
+<li>得买 VPS，一年 60~300 块起</li>
+<li>域名在国内服务器要备案，境外服务器又慢</li>
+<li>定期升级 PHP、防爆破、备份数据库</li>
+<li>数据锁在数据库里，将来想换回静态又麻烦</li>
+</ul>
+<p>对于一个”几年才写一次”的博客来说，静态方案是唯一合理选择。<strong>Typecho 是好东西，但不是给我这种写作频率的人用的。</strong></p>
+<p>最后决定原地重建 Hexo，但这次把架构改对：</p>
+<ul>
+<li>Markdown 源码进 Git 版本管理</li>
+<li>部署交给 GitHub Actions 自动化</li>
+<li>换电脑后 <code>git clone</code> 就能继续写</li>
+</ul>
+<h2 id="新架构：源码-产物分离"><a href="#新架构：源码-产物分离" class="headerlink" title="新架构：源码&#x2F;产物分离"></a>新架构：源码&#x2F;产物分离</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">winchey.github.io 仓库</span><br><span class="line">├── main 分支          ← Hexo 源码（.md、_config.yml、themes、workflow）</span><br><span class="line">├── gh-pages 分支      ← 构建产物 HTML（Actions 生成，不用管）</span><br><span class="line">└── legacy-build 分支  ← 2021 年的老 HTML 备份（安全网）</span><br><span class="line"></span><br><span class="line">写文章 → git push origin main → GitHub Actions 自动构建 → 推到 gh-pages → 网站更新</span><br></pre></td></tr></table></figure>
+
+<p>之后的写作流程只有三步：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npx hexo new <span class="string">&quot;文章标题&quot;</span></span><br><span class="line"><span class="comment"># 用 Typora / VSCode 写 Markdown</span></span><br><span class="line">git add . &amp;&amp; git commit -m <span class="string">&quot;post: 标题&quot;</span> &amp;&amp; git push</span><br></pre></td></tr></table></figure>
+
+<p>推完两三分钟，<code>www.liwanqing.com</code> 自动更新。<strong>没有命令行部署，没有手动 build，没有 SSH 到服务器。</strong></p>
+<h2 id="迁移过程中踩到的几个坑"><a href="#迁移过程中踩到的几个坑" class="headerlink" title="迁移过程中踩到的几个坑"></a>迁移过程中踩到的几个坑</h2><h3 id="1-hexo-init-不能在非空目录里跑"><a href="#1-hexo-init-不能在非空目录里跑" class="headerlink" title="1. hexo init . 不能在非空目录里跑"></a>1. <code>hexo init .</code> 不能在非空目录里跑</h3><p>Hexo 会把 <code>.git</code> 目录也算成”非空”，直接拒绝初始化。绕过办法是先在临时目录初始化：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo init /tmp/hexo-init</span><br><span class="line"><span class="built_in">cp</span> -R /tmp/hexo-init/. .   <span class="comment"># 拷回，保留 .git</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-config-yml-改动不热重载"><a href="#2-config-yml-改动不热重载" class="headerlink" title="2. _config.yml 改动不热重载"></a>2. <code>_config.yml</code> 改动不热重载</h3><p><code>hexo server</code> 只监听 <code>source/</code> 目录的变化。改 <code>_config.yml</code> 或 <code>_config.next.yml</code> 必须重启服务才能看到效果。改一次配置刷不出来别慌，重启就好。</p>
+<h3 id="3-theme-next-在-GitHub-Pages-上会触发一次莫名其妙的-Jekyll-报错"><a href="#3-theme-next-在-GitHub-Pages-上会触发一次莫名其妙的-Jekyll-报错" class="headerlink" title="3. theme: next 在 GitHub Pages 上会触发一次莫名其妙的 Jekyll 报错"></a>3. <code>theme: next</code> 在 GitHub Pages 上会触发一次莫名其妙的 Jekyll 报错</h3><p>第一次 push 之后，Actions 页面除了我们的 Hexo workflow，还多了一个 GitHub Pages 默认触发的 Jekyll 构建任务，报错 <code>The next theme could not be found</code>。</p>
+<p>原因是 Pages Source 默认从 <code>main</code> 分支跑 Jekyll，Jekyll 看到 <code>theme: next</code> 以为要找一个叫 “next” 的 <strong>Jekyll Ruby gem 主题</strong>（其实这是 Hexo 主题名）。</p>
+<p>解法很简单——把 Pages Source 从 <code>main</code> 切到 <code>gh-pages</code> 分支就好。切完之后，Jekyll 那个”僵尸构建”就再也不会跑了。</p>
+<h3 id="4-NexT-8-x-的-back-to-top-按钮跟侧边栏同侧"><a href="#4-NexT-8-x-的-back-to-top-按钮跟侧边栏同侧" class="headerlink" title="4. NexT 8.x 的 back-to-top 按钮跟侧边栏同侧"></a>4. NexT 8.x 的 back-to-top 按钮跟侧边栏同侧</h3><p>Pisces 布局的侧边栏在左，回顶按钮就跟着放到了左下角，不习惯。用 <code>custom_file_path.style</code> 挂一个自定义 stylus 覆盖：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.back-to-top</span></span><br><span class="line">  <span class="attribute">left</span>: auto <span class="meta">!important</span></span><br><span class="line">  <span class="attribute">right</span>: <span class="number">30px</span> <span class="meta">!important</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="5-NexT-侧边栏”链接”想改成”友链”"><a href="#5-NexT-侧边栏”链接”想改成”友链”" class="headerlink" title="5. NexT 侧边栏”链接”想改成”友链”"></a>5. NexT 侧边栏”链接”想改成”友链”</h3><p>主题的区块标题在 i18n 文件里，改 <code>node_modules</code> 里的 yml 文件太丑——npm 更新就没了。用 Hexo 的 <code>after_render:html</code> 过滤器优雅地替换：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// scripts/rename-links-title.js</span></span><br><span class="line">hexo.<span class="property">extend</span>.<span class="property">filter</span>.<span class="title function_">register</span>(<span class="string">&#x27;after_render:html&#x27;</span>, <span class="keyword">function</span> (<span class="params">str</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> str.<span class="title function_">replace</span>(</span><br><span class="line">    <span class="regexp">/&lt;div class=&quot;links-of-blogroll-title&quot;&gt;([\s\S]*?)链接\s*&lt;\/div&gt;/g</span>,</span><br><span class="line">    <span class="string">&#x27;&lt;div class=&quot;links-of-blogroll-title&quot;&gt;$1友链&lt;/div&gt;&#x27;</span></span><br><span class="line">  );</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>Hexo 会自动加载 <code>scripts/</code> 目录下的所有脚本，这种小改造走这条路最干净。</p>
+<h2 id="老文章的迁移"><a href="#老文章的迁移" class="headerlink" title="老文章的迁移"></a>老文章的迁移</h2><p>原本以为要写脚本把老 HTML 反向转成 Markdown，翻了下 <code>search.xml</code> 发现只有两篇——一篇 Hexo 自带的 hello-world 示例（直接扔掉），一篇 2021 年写的搭建教程。</p>
+<p>手工把那一篇的正文转成 Markdown，加上 front-matter，图片路径改成 <code>/images/...</code> 的绝对路径。永久链接保持 <code>:year/:month/:day/:title/</code> 不变，所以老链接可以无缝访问。</p>
+<h2 id="现在拥有了什么"><a href="#现在拥有了什么" class="headerlink" title="现在拥有了什么"></a>现在拥有了什么</h2><p>一个不会再丢源码的博客工程。一个每次 push 自动构建部署的流水线。一个 legacy-build 备份分支作为安全网。</p>
+<p>以及最重要的：<strong>一个终于可以继续写下去的地方。</strong></p>
+<p>再见 2021 年的自己。这里从今天起重新开始。</p>
+<hr>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>本次博客重启从零到上线的全过程——环境搭建、架构决策、迁移脚本、样式调优、GitHub Actions 配置、踩坑排查——全权由大模型 <strong>Claude Opus 4.7 (1M context)</strong> 协作完成。我负责提需求、审美取舍和最终决定，剩下的动手活儿都交给了它。</p>
+<p>包括这篇文章的初稿。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+              <a href="/tags/NexT/" rel="tag"># NexT</a>
+              <a href="/tags/GitHub-Actions/" rel="tag"># GitHub Actions</a>
+              <a href="/tags/Blog/" rel="tag"># Blog</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/09/13/%E5%9F%BA%E4%BA%8EHexo%E6%A1%86%E6%9E%B6%E5%92%8CNexT%E4%B8%BB%E9%A2%98%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" rel="prev" title="基于Hexo框架和NexT主题的个人博客搭建">
+                  <i class="fa fa-angle-left"></i> 基于Hexo框架和NexT主题的个人博客搭建
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2021 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-terminal"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Li Wanqing</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">4k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">4 分钟</span>
+  </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
